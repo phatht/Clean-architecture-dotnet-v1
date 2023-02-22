@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  mcr-service-user: 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SubscriptionClientName=User
+      - EventBusConnection=192.168.1.253
+      - EventBusUserName=vietinfo
+      - EventBusPassword=vietinfo@123
+      - EventBusRetryCount=5
+    ports:
+      - "8600:80"
+
+  #mcr-service-post:
+  #  environment:
+  #    - ASPNETCORE_ENVIRONMENT=Development
+  #  ports:
+  #    - "80"
+

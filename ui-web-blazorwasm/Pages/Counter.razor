@@ -1,0 +1,49 @@
+﻿@page "/counter"
+@using ui_web_blazorwasm.Pages.Components;
+
+<PageTitle>Counter </PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count:  @currentCount</p>
+
+<MyComponent countMyComponent=@currentCount></MyComponent>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<input @bind-value=@currentCount />
+<input @bind-value=@dateOfBirth type="date" />
+
+<h1>Toggle the options</h1>
+<input @bind-value=FirstOptionValue type="checkbox" /> First option
+<br />
+<input @bind-value=SecondOptionValue type="checkbox" /> Second option
+<br />
+
+<CascadingValue Name="FirstOption" Value=@FirstOptionValue>
+    <CascadingValue Name="SecondOption" Value=@SecondOptionValue>
+        <FirstLevelComponent />
+    </CascadingValue>
+</CascadingValue>
+
+
+@code {
+
+    bool FirstOptionValue;
+    bool SecondOptionValue;
+    private int currentCount = 0;
+    private DateTime? dateOfBirth;
+
+    [Parameter]
+    public EventCallback<int> OnMultipleOfThree { get; set; }
+
+
+    private async void IncrementCount()
+    {
+        currentCount++;
+        if (currentCount % 3 == 0)
+            await OnMultipleOfThree.InvokeAsync(currentCount);
+
+    }
+
+}

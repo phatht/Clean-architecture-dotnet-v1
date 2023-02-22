@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  mcr-service-user: 
+    image: ${DOCKER_REGISTRY-}mcrserviceuser
+    build:
+      context: .
+      dockerfile: mcr-service-user/Dockerfile
+
+  #mcr-service-post:
+  #  image: ${DOCKER_REGISTRY-}mcrservicepost
+  #  build:
+  #    context: .
+  #    dockerfile: mcr-service-post/Dockerfile
+

@@ -1,0 +1,21 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+last multiple of three @_a;
+
+<Counter OnMultipleOfThree=@update></Counter>
+
+@code{  
+    int _a = 0;
+    private void update(int a)
+    {
+        _a = a;
+    }
+}
